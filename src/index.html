@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navbar</title>
+    <!-- Tailwind css -->
+    <link href="../dist/output.css" rel="stylesheet">
+    <!-- Alpine js  -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+</head>
+<body>
+    <nav  x-data="{navOpen: true}" class="py-9 px-4">
+        <div class="container mx-auto">
+            <div class="flex justify-between items-center">
+                <img src="../public/img/logo.svg" alt="logo" width="50" class="order-1 sm:order-2">
+                <div class="order-2 sm:order-1 lg:hidden">
+                    <ion-icon 
+                    x-show="!navOpen"  @click="navOpen = true" name="reorder-three" class="text-4xl text-gray"
+                    x-transition:enter="transition ease-out duration-300"
+                    x-transition:enter-start="opacity-0 scale-90"
+                    ></ion-icon>
+                    <ion-icon 
+                    x-show="navOpen" @click="navOpen = false" name="close" class="text-3xl sm:text-4xl text-gray"
+                    x-transition:enter="transition ease-out duration-300"
+                    x-transition:enter-start="opacity-0 scale-90"
+                    ></ion-icon>
+                </div>
+                <div class="order-2 hidden lg:block">
+                    <div class="flex gap-10">
+                        <a href="" class="text-md font-semibold text-ungu hover:text-ungu">Home</a>
+                        <a href="" class="text-md font-semibold text-gray hover:text-ungu">Discover</a>
+                        <a href="" class="text-md font-semibold text-gray hover:text-ungu">Special</a>
+                        <a href="" class="text-md font-semibold text-gray hover:text-ungu">Contact</a>
+                        <a href="" class="text-md font-semibold text-gray hover:text-ungu">More</a>
+                    </div>
+                </div>
+                <div class="order-3 hidden sm:block">
+                    <button href="" class="bg-white px-8 rounded-full py-4 text-gray text-sm grow font-bold">login</button>
+                    <button href="" class="bg-ungu px-7 rounded-full py-4 text-white text-sm grow font-bold">Register</button>
+                </div>
+            </div>
+        </div>
+        <div 
+        x-show="navOpen" 
+        x-data="{open: false}"
+        x-transition:enter="transition ease-out duration-300"
+        x-transition:enter-start="opacity-0 scale-90"
+        x-transition:enter-end="opacity-100 scale-100"
+        x-transition:leave="transition ease-in duration-300"
+        x-transition:leave-start="opacity-100 scale-100"
+        x-transition:leave-end="opacity-0 scale-90" 
+        class="fixed left-0 right-0 bottom-0 bg-white p-4 lg:hidden">
+            <div class="flex justify-between">
+                <button class="flex flex-col items-center justify-center text-ungu">
+                    <ion-icon name="home"></ion-icon>
+                    <p class="text-base font-bold">Home</p>
+                </button>
+                <button class="flex flex-col items-center justify-center text-gray">
+                    <ion-icon name="browsers"></ion-icon>
+                    <p class="text-md font-medium">Discover</p>
+                </button>
+                <button class="flex flex-col items-center justify-center text-gray">
+                    <ion-icon name="sparkles"></ion-icon>
+                    <p class="text-md font-medium">Spescial</p>
+                </button>
+                <button class="flex flex-col items-center justify-center text-gray">
+                    <ion-icon name="call"></ion-icon>
+                    <p class="text-md font-medium">Contact</p>
+                </button>
+                <button @click="open = !open" class="flex flex-col items-center justify-center text-gray">
+                    <ion-icon name="ellipsis-horizontal"></ion-icon>
+                    <p class="text-md font-medium">More</p>
+                </button>
+            </div>
+            <div x-show="open" 
+                x-transition:enter="transition ease-out duration-300"
+                x-transition:enter-start="opacity-0 scale-90"
+                x-transition:enter-end="opacity-100 scale-100"
+                x-transition:leave="transition ease-in duration-300"
+                x-transition:leave-start="opacity-100 scale-100"
+                x-transition:leave-end="opacity-0 scale-90"
+                class="absolute bottom-24 left-1/2 -translate-x-1/2 flex gap-4 w-3/4 transition-all ease-in-out duration-300">
+                <button href="" class="bg-white px-8 rounded-full py-4 text-gray text-sm grow font-bold">login</button>
+                <button href="" class="bg-ungu px-7 rounded-full py-4 text-white text-sm grow font-bold">Register</button>
+            </div>
+        </div>
+    </nav>
+
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+</body>    
+</html>
